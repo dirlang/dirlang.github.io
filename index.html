@@ -1,116 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title></title>
-	<link rel="stylesheet" href="">
-	<style>
-	body{
-		background: #000;
-		perspective: 1000px;
-	}
-		#box{
-			position: relative;
-			width: 100px;
-			height: 200px;
-			margin: 170px auto;
-			animation: move 5s linear infinite;
-			transform-style: preserve-3d;
-		}
-		@keyframes move{
-			from {
-				transform: rotateY(0deg) rotateX(0deg);
-			}
-			to {
-				transform: rotateY(360deg) rotateX(360deg);
-			}
-		}
-		#box .heart{
-			position: absolute;
-			left: 0;
-			right: 0;
-			width: 100px;
-			height: 160px;
-			border: 2px solid red;
-			border-radius: 50% 50% 0 / 40% 50% 0;
-			border-bottom: 0;
-			border-left: 0;
-			transform: rotate(45deg);
-		}
-		
-		.cube{
-			margin: 100px auto;
-			position: absolute;
-			width: 50px;
-			height: 50px;
-			transform-style: preserve-3d;
-			transition: 3s;
-			transform-origin: 50% 50% 25px;
-			transform: translateX(25px) translateY(-40px) translateZ(-25px)
-		}
-		.cube>div{
-			position: absolute;
-			left: 0;
-			top: 0;
-			width: 50px;
-			height: 50px;
-		}
-		.cube>div:nth-child(1){
-		}
-		.cube>div:nth-child(2){
-			left: -50px;
-			transform-origin: right;
-			transform: rotateY(90deg);
-		}
-		.cube>div:nth-child(3){
-			left: 50px;
-			transform-origin: left;
-			transform: rotateY(-90deg);
-		}
-		.cube>div:nth-child(4){
-			top: 50px;
-			transform-origin: top;
-			transform: rotateX(90deg);
-		}
-		.cube>div:nth-child(5){
-			top: -50px;
-			transform-origin: bottom;
-			transform: rotateX(-90deg);
-		}
-		.cube>div:nth-child(6){
-			transform: translateZ(50px);
-		}
-		.cube>div img{
-			width: 50px;
-			height: 50px;
-		}
-		.cube:hover{
-			transform:rotateY(360deg);
-		}
-	</style>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="爱心，爱心飘落">
+    <meta name="description" content="爱心飘落">
+    <title>爱心飘落</title>
 </head>
+<style>
+    body,html{
+        width: 100%;
+        height: 100%;
+    }
+    body{
+        overflow: hidden;
+        margin: 0;
+        background-image: url("images/2.jpg");
+        background-size: cover;
+    }
+    .heart{
+        position: relative;
+        width: 200px;
+        height: 200px;
+        margin: 50px auto;
+    }
+    .snowfall-flakes:before,.snowfall-flakes:after{
+        content: "";
+        position: absolute;
+        top:0;
+        left:0;
+        width: 10px;
+        height: 15px;
+        background-color: #ff0000;
+        border-radius: 5px 5px 0 0;
+    }
+    .snowfall-flakes:before{
+        transform: rotate(-45deg);
+    }
+    .snowfall-flakes:after{
+        transform: translate(3.6px) rotate(45deg);
+    }
+</style>
 <body>
-	<div id="box">
-		<div class="cube">
-			<div><img src="img/1.jpg" alt=""></div>
-			<div><img src="img/2.jpg" alt=""></div>
-			<div><img src="img/3.jpg" alt=""></div>
-			<div><img src="img/4.jpg" alt=""></div>
-			<div><img src="img/5.jpg" alt=""></div>
-			<div><img src="img/6.jpg" alt=""></div>
-		</div>
-
-	</div>
-
-	<script>
-		var box=document.getElementById('box');
-		for (var i = 0; i <36; i++) {
-			var oDiv=document.createElement('div');
-			oDiv.className="heart";
-			box.appendChild(oDiv);
-			oDiv.style.transform = "rotateY("+i*10+"deg) rotateZ(45deg) translateX(30px)";
-		}
-	</script>
+    <!-- <div class="heart"></div> -->
+    <script src="js/jquery-1.2.6.min.js"></script>
+    <script src="js/snowfall.jquery.js"></script>
+    <script>
+        $(document).snowfall({flakeCount : 100,maxSpeed : 10});
+    </script>
 </body>
 </html>
